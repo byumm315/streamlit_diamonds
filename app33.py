@@ -1,3 +1,4 @@
+%%writefile app33.py
 import streamlit as st
 import plotly.figure_factory as ff
 import pandas as pd
@@ -18,12 +19,11 @@ diamond_df = diamond_df[(diamond_df["z"]<30)&(diamond_df["z"]>2)]
 df = diamond_df.drop(['cut','color','clarity'],axis=1)
 
 st.subheader('The Scatter plots of Diamond data')
-@st.cache_data(experimental_allow_widgets=True)
+@st.cache_data()
 def func3():
     fig2 = px.scatter_matrix(df)
     fig2.update_traces(marker={'size':3})
     st.plotly_chart(fig2)
     st.subheader('The Correlation of Diamond data')
     st.dataframe(round(diamond_df.corr(),2))
-
 func3()
