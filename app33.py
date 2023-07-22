@@ -17,6 +17,9 @@ diamond_df = diamond_df[(diamond_df["z"]<30)&(diamond_df["z"]>2)]
 
 df = diamond_df.drop(['cut','color','clarity'],axis=1)
 
+st.set_page_config(
+    page_title="Scatter plots - Remove outliers"
+)
 st.subheader('The Scatter plots of Diamond data')
 @st.cache_data()
 def func3():
