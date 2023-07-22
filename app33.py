@@ -1,4 +1,3 @@
-%%writefile app33.py
 import streamlit as st
 import plotly.figure_factory as ff
 import pandas as pd
