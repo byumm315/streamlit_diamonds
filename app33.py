@@ -24,5 +24,5 @@ def func3():
     fig2.update_traces(marker={'size':3})
     st.plotly_chart(fig2)
     st.subheader('The Correlation of Diamond data')
-    st.dataframe(round(diamond_df.corr(),2))
+    st.dataframe(round(df.corr(),2))
 func3()
