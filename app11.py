@@ -1,4 +1,3 @@
-!pip3 install plotly
 import streamlit as st
 import plotly.figure_factory as ff
 import pandas as pd
