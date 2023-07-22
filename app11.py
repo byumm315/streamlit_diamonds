@@ -4,7 +4,9 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
-
+st.set_page_config(
+    page_title="Home"
+)
 st.title('Diamond Price Predictor') #홈페이지 제목추가
 st.header('Diamond Data')
 st.image('https://www.casadoro.com/wp-content/uploads/2022/03/diamond-980x654.jpeg')
