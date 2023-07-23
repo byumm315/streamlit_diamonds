@@ -16,10 +16,6 @@ diamond_df=pd.read_csv('diamonds.csv')
 diamond_df=diamond_df.drop('Unnamed: 0',axis=1) #Unnamed: 0 변수 삭제하기
 diamond_df=diamond_df.drop(diamond_df[(diamond_df["x"]==0)|(diamond_df["y"]==0)|(diamond_df["z"]==0)].index).reset_index(drop=True) #x, y, z 셋 중 하나라도 0인 행은 삭제하였다.
 df = diamond_df.drop(['cut','color','clarity'],axis=1)
-import random
-random.seed(90)
-diamond_df=diamond_df.loc[random.sample(list(range(len(df))),5000)].reset_index(drop=True)
-df=df.loc[random.sample(list(range(len(df))),5000)].reset_index(drop=True)
 
 diamond_df = diamond_df[(diamond_df["depth"]<75)&(diamond_df["depth"]>45)]
 diamond_df = diamond_df[(diamond_df["table"]<80)&(diamond_df["table"]>40)]  
@@ -107,27 +103,21 @@ import joblib
 # Title
 st.header("Streamlit Machine Learning App")
 
-carat = st.number_input("Enter carat")
 value = st.slider("values", 0.000, 10.000, step=0.001)
 st.write(f"The Diamond Caret is {value}.")
 
-depth = st.number_input("Enter depth")
 value1 = st.slider("values", 30.000, 100.000, step=0.001)
 st.write(f"The Diamond Depth is {value1}.")
 
-table= st.number_input("Enter table")
 value2 = st.slider("values", 30.000, 100.000, step=0.001)
 st.write(f"The Diamond Table is {value2}.")
 
-x= st.number_input("Enter X-axis")
 value3 = st.slider("values", 0.000, 20.000, step=0.001)
 st.write(f"The Diamond X-axis is {value3}.")
 
-y = st.number_input("Enter Y-axis")
 value4 = st.slider("values", 0.000, 20.000, step=0.001)
 st.write(f"The Diamond Y-axis is {value4}.")
 
-z= st.number_input("Enter Z-axis")
 value5 = st.slider("values", 0.000, 20.000, step=0.001)
 st.write(f"The Diamond Z-axis is {value5}.")
 
