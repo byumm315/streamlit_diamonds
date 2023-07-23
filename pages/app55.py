@@ -28,23 +28,9 @@ def func6():
     a,b = st.select_slider(f'Choose a x-axis point', options=sorted(diamond_df['x']),value=(np.min(sorted(list(set(diamond_df['x'])))),np.max(sorted(list(set(diamond_df['x']))))))
     k1=list(diamond_df[diamond_df['x']==a].index)[0]
     k2=list(diamond_df[diamond_df['x']==b].index)[-1]
-    trace1 = go.Scatter3d(
-            x = diamond_df.loc[k1:k2,'x'], y = diamond_df.loc[k1:k2,'y'],z = diamond_df.loc[k1:k2,'z'],
-            mode = 'markers',
-            marker = dict(size=3, color='blue'),
-            )
-
-    fig7 = go.Figure(data=[trace1])
-    fig7.update_layout(
-            scene = dict(
-            xaxis_title = 'x-axis',
-            yaxis_title = 'y-axis',
-            zaxis_title = 'z-axis'),
-            margin=dict(r=20, b=10, l=10, t=10),
-        )
-
-    st.plotly_chart(fig7, use_container_width=True)
-
+    fig7 = px.scatter_matrix(df.loc[k1:k2,['x','y','z']])
+    fig7.update_traces(marker={'size':3})
+    st.plotly_chart(fig7)
 
 @st.cache_data(experimental_allow_widgets=True)
 def func7():
@@ -53,22 +39,9 @@ def func7():
     a,b = st.select_slider(f'Choose a y-axis point', options=sorted(diamond_df['y']),value=(np.min(sorted(list(set(diamond_df['y'])))),np.max(sorted(list(set(diamond_df['y']))))))
     k1=list(diamond_df[diamond_df['y']==a].index)[0]
     k2=list(diamond_df[diamond_df['y']==b].index)[-1]
-    trace1 = go.Scatter3d(
-            x = diamond_df.loc[k1:k2,'x'], y =diamond_df.loc[k1:k2,'y'],z = diamond_df.loc[k1:k2,'z'],
-            mode = 'markers',
-            marker = dict(size=3, color='blue'),
-            )
-
-    fig8 = go.Figure(data=[trace1])
-    fig8.update_layout(
-            scene = dict(
-            xaxis_title = 'x-axis',
-            yaxis_title = 'y-axis',
-            zaxis_title = 'z-axis'),
-            margin=dict(r=20, b=10, l=10, t=10),
-        )
-
-    st.plotly_chart(fig8, use_container_width=True)
+    fig8 = px.scatter_matrix(df.loc[k1:k2,['x','y','z']])
+    fig8.update_traces(marker={'size':3})
+    st.plotly_chart(fig8)
 
 @st.cache_data(experimental_allow_widgets=True)
 def func8():
@@ -77,22 +50,9 @@ def func8():
     a,b = st.select_slider(f'Choose a z-axis point', options=sorted(diamond_df['z']),value=(np.min(sorted(list(set(diamond_df['z'])))),np.max(sorted(list(set(diamond_df['z']))))))
     k1=list(diamond_df[diamond_df['z']==a].index)[0]
     k2=list(diamond_df[diamond_df['z']==b].index)[-1]
-    trace1 = go.Scatter3d(
-            x = diamond_df.loc[k1:k2,'x'], y = diamond_df.loc[k1:k2,'y'],z = diamond_df.loc[k1:k2,'z'],
-            mode = 'markers',
-            marker = dict(size=3, color='blue'),
-            )
-
-    fig9 = go.Figure(data=[trace1])
-    fig9.update_layout(
-            scene = dict(
-            xaxis_title = 'x-axis',
-            yaxis_title = 'y-axis',
-            zaxis_title = 'z-axis'),
-            margin=dict(r=20, b=10, l=10, t=10),
-        )
-
-    st.plotly_chart(fig9, use_container_width=True)
+    fig9 = px.scatter_matrix(df.loc[k1:k2,['x','y','z']])
+    fig9.update_traces(marker={'size':3})
+    st.plotly_chart(fig9)
 
 func6()
 func7()
