@@ -16,6 +16,10 @@ diamond_df = diamond_df[(diamond_df["y"]<30)]
 diamond_df = diamond_df[(diamond_df["z"]<30)&(diamond_df["z"]>2)]
 
 df = diamond_df.drop(['cut','color','clarity'],axis=1)
+import random
+random.seed(90)
+diamond_df=diamond_df.loc[random.sample(list(range(len(df))),5000)].reset_index(drop=True)
+df=df.loc[random.sample(list(range(len(df))),5000)].reset_index(drop=True)
 
 st.set_page_config(
     page_title="Scatter plots - Remove outliers"
