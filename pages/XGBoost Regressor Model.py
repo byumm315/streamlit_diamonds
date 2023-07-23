@@ -103,6 +103,7 @@ import joblib
 # Title
 st.header("Streamlit Machine Learning App")
 information = st.text_input(label="X values", value="0,0,0,0,0,0")
+st.write('They are all float type')
 st.write('caret: 0-10')
 st.write('depth: 40-100')
 st.write('table: 40-100')
@@ -121,7 +122,7 @@ st.write(f'Your input is caret:{value},depth:{value1},table:{value2},x:{value3},
 
 v1_list = list(set(diamond_df.cut))
 vari1 = st.selectbox(label = "Choose a Cut Variable", options = v1_list,key=111)
-st.write(f"The Diamond Cut is {vali1}.")
+st.write(f"The Diamond Cut is {vari1}.")
 
 v2_list = list(set(diamond_df.color))
 vari2 = st.selectbox(label = "Choose a Color Variable", options = v2_list,key=222)
@@ -129,5 +130,5 @@ st.write(f"The Diamond Color is {vari2}.")
 
 v3_list = list(set(diamond_df.clarity))
 vari3 = st.selectbox(label = "Choose a Clarity Variable", options = v3_list,key=333)
-st.write(f"The Diamond clarity is {vali3}.")
+st.write(f"The Diamond clarity is {vari3}.")
 st.write(f'Your input is cut: {vari1},color: {vari2},clarity: {vari3}')
