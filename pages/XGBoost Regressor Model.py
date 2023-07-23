@@ -103,22 +103,22 @@ import joblib
 # Title
 st.header("Streamlit Machine Learning App")
 
-value = st.slider("values", 0.000, 10.000, step=0.001)
+value = st.slider("values", 0.000, 10.000, step=0.001,key=1)
 st.write(f"The Diamond Caret is {value}.")
 
-value1 = st.slider("values", 30.000, 100.000, step=0.001)
+value1 = st.slider("values", 30.000, 100.000, step=0.001,key=2)
 st.write(f"The Diamond Depth is {value1}.")
 
-value2 = st.slider("values", 30.000, 100.000, step=0.001)
+value2 = st.slider("values", 30.000, 100.000, step=0.001,key=3)
 st.write(f"The Diamond Table is {value2}.")
 
-value3 = st.slider("values", 0.000, 20.000, step=0.001)
+value3 = st.slider("values", 0.000, 20.000, step=0.001,key=4)
 st.write(f"The Diamond X-axis is {value3}.")
 
-value4 = st.slider("values", 0.000, 20.000, step=0.001)
+value4 = st.slider("values", 0.000, 20.000, step=0.001,key=5)
 st.write(f"The Diamond Y-axis is {value4}.")
 
-value5 = st.slider("values", 0.000, 20.000, step=0.001)
+value5 = st.slider("values", 0.000, 20.000, step=0.001,key=6)
 st.write(f"The Diamond Z-axis is {value5}.")
 
 
