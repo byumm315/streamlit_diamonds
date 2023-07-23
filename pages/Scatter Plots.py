@@ -8,10 +8,6 @@ diamond_df=pd.read_csv('diamonds.csv')
 diamond_df=diamond_df.drop('Unnamed: 0',axis=1) #Unnamed: 0 변수 삭제하기
 diamond_df=diamond_df.drop(diamond_df[(diamond_df["x"]==0)|(diamond_df["y"]==0)|(diamond_df["z"]==0)].index).reset_index(drop=True) #x, y, z 셋 중 하나라도 0인 행은 삭제하였다.
 df = diamond_df.drop(['cut','color','clarity'],axis=1)
-import random
-random.seed(90)
-diamond_df=diamond_df.loc[random.sample(list(range(len(df))),5000)].reset_index(drop=True)
-df=df.loc[random.sample(list(range(len(df))),5000)].reset_index(drop=True)
 
 st.subheader('The Scatter plots of Diamond data')
 def func1():   
