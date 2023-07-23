@@ -33,6 +33,55 @@ label_encoder = LabelEncoder()
 for col in object_cols:
     label_data[col] = label_encoder.fit_transform(label_data[col])
 
+dict_cut={}
+aa=list(diamond_df[diamond_df['cut']=='Ideal'].index)[0]
+dict_cut['Ideal']=label_data.loc[aa,'cut']
+aa=list(diamond_df[diamond_df['cut']=='Premium'].index)[0]
+dict_cut['Premium']=label_data.loc[aa,'cut']
+aa=list(diamond_df[diamond_df['cut']=='Good'].index)[0]
+dict_cut['Good']=label_data.loc[aa,'cut']
+aa=list(diamond_df[diamond_df['cut']=='Very Good'].index)[0]
+dict_cut['Very Good']=label_data.loc[aa,'cut']
+aa=list(diamond_df[diamond_df['cut']=='Fair'].index)[0]
+dict_cut['Fair']=label_data.loc[aa,'cut']
+
+dict_color={}
+aa=list(diamond_df[diamond_df['color']=='E'].index)[0]
+dict_color['E']=label_data.loc[aa,'color']
+aa=list(diamond_df[diamond_df['color']=='I'].index)[0]
+dict_color['I']=label_data.loc[aa,'color']
+aa=list(diamond_df[diamond_df['color']=='J'].index)[0]
+dict_color['J']=label_data.loc[aa,'color']
+aa=list(diamond_df[diamond_df['color']=='M'].index)[0]
+dict_color['M']=label_data.loc[aa,'color']
+aa=list(diamond_df[diamond_df['color']=='F'].index)[0]
+dict_color['F']=label_data.loc[aa,'color']
+aa=list(diamond_df[diamond_df['color']=='G'].index)[0]
+dict_color['G']=label_data.loc[aa,'color']
+aa=list(diamond_df[diamond_df['color']=='D'].index)[0]
+dict_color['D']=label_data.loc[aa,'color']
+
+
+dict_clarity={}
+aa=list(diamond_df[diamond_df['clarity']=='SI2'].index)[0]
+dict_clarity['SI2']=label_data.loc[aa,'clarity']
+aa=list(diamond_df[diamond_df['clarity']=='SI1'].index)[0]
+dict_clarity['SI1']=label_data.loc[aa,'clarity']
+aa=list(diamond_df[diamond_df['clarity']=='VS1'].index)[0]
+dict_clarity['VS1']=label_data.loc[aa,'clarity']
+aa=list(diamond_df[diamond_df['clarity']=='VS2'].index)[0]
+dict_clarity['VS2']=label_data.loc[aa,'clarity']
+aa=list(diamond_df[diamond_df['clarity']=='WS2'].index)[0]
+dict_clarity['WS2']=label_data.loc[aa,'clarity']
+aa=list(diamond_df[diamond_df['clarity']=='WS1'].index)[0]
+dict_clarity['WS1']=label_data.loc[aa,'clarity']
+aa=list(diamond_df[diamond_df['clarity']=='I1'].index)[0]
+dict_clarity['I1']=label_data.loc[aa,'clarity']
+aa=list(diamond_df[diamond_df['clarity']=='IF'].index)[0]
+dict_clarity['IF']=label_data.loc[aa,'clarity']
+
+
+
 # Assigning the featurs as X and trarget as y
 X= label_data.drop(["price"],axis =1)
 y= label_data["price"]
@@ -56,28 +105,54 @@ st.header("Streamlit Machine Learning App")
 
 carat = st.number_input("Enter carat")
 value = st.slider("values", 0, 10, step=0.001)
+st.write(f"The Diamond Caret is {value}.")
 
 depth = st.number_input("Enter depth")
 value1 = st.slider("values", 30, 100, step=0.001)
+st.write(f"The Diamond Depth is {value1}.")
 
 table= st.number_input("Enter table")
 value2 = st.slider("values", 30, 100, step=0.001)
+st.write(f"The Diamond Table is {value2}.")
+
+x= st.number_input("Enter X-axis")
+value3 = st.slider("values", 0, 20, step=0.001)
+st.write(f"The Diamond X-axis is {value3}.")
+
+y = st.number_input("Enter Y-axis")
+value4 = st.slider("values", 0, 20, step=0.001)
+st.write(f"The Diamond Y-axis is {value4}.")
+
+z= st.number_input("Enter Z-axis")
+value5 = st.slider("values", 0, 20, step=0.001)
+st.write(f"The Diamond Z-axis is {value5}.")
 
 
+v1_list = list(set(diamon_df.cut))
+vari1 = st.selectbox(label = "Choose a Cut Variable", options = v1_list,key=1)
+st.write(f"The Diamond Cut is {vali1}.")
+
+v2_list = list(set(diamon_df.color))
+vari2 = st.selectbox(label = "Choose a Color Variable", options = v2_list,key=2)
+st.write(f"The Diamond Color is {vari2}.")
+
+v3_list = list(set(diamon_df.clarity))
+vari3 = st.selectbox(label = "Choose a Clarity Variable", options = v3_list,key=3)
+st.write(f"The Diamond clarity is {vali3}.")
 
 # If button is pressed
 if st.button("Submit"):
     
     # Unpickle classifier
-    clf = joblib.load("clf.pkl")
+    xgb = joblib.load("xgb.pkl")
     
     # Store inputs into dataframe
-    X = pd.DataFrame([[height, weight, eyes]], 
-                     columns = ["Height", "Weight", "Eyes"])
-    X = X.replace(["Brown", "Blue"], [1, 0])
-    
+    X = pd.DataFrame([[value,value1,value2,value3,value4,value5,dict_cut[vari1],dict_color[vari2]
+,dict_clarity[vari3]]],columns = ['caret','depth','table','x','y','z','cut','color','clarity'])
+
+
     # Get prediction
-    prediction = clf.predict(X)[0]
+    prediction = round(xgb.predict(X)[0],2)
     
     # Output prediction
     st.text(f"This instance is a {prediction}")
