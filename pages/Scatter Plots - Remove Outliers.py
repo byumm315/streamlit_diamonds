@@ -29,3 +29,15 @@ def func3():
     st.subheader('The Correlation of Diamond data')
     st.dataframe(round(df.corr(),2))
 func3()
+
+v_list = list(df.columns)
+vari = st.selectbox(label = "Choose a Variable", options = v_list,key=1)
+diamond_df=diamond_df.sort_values(by=vari).reset_index(drop=True)
+a,b = st.select_slider(f'Choose a {vari}-axis point', options=sorted(diamond_df[vari]),value=(np.min(sorted(list(set(diamond_df[vari])))),np.max(sorted(list(set(diamond_df[vari]))))))
+k1=list(diamond_df[diamond_df[vari]==a].index)[0]
+k2=list(diamond_df[diamond_df[vari]==b].index)[-1]
+
+
+fig1 = px.scatter(diamond_df.loc[k1:k2], x=vari1, y=vari2, color=vari3,title=title)
+fig1.update_traces(marker={'size':10})
+st.plotly_chart(fig1)
