@@ -88,17 +88,8 @@ y= label_data["price"]
 
 X_train, X_test, y_train, y_test = train_test_split(X, y,test_size=0.25, random_state=7)
 
-xgb_model = XGBRegressor()
-
-xgb_model.fit(X_train,y_train)
-
-import joblib
-
-joblib.dump(xgb_model, "xgb.pkl")
-
 import streamlit as st
 import pandas as pd
-import joblib
 
 # Title
 st.header("Streamlit Machine Learning App")
@@ -132,3 +123,21 @@ v3_list = list(set(diamond_df.clarity))
 vari3 = st.selectbox(label = "Choose a Clarity Variable", options = v3_list,key=333)
 st.write(f"The Diamond clarity is {vari3}.")
 st.write(f'Your input is cut: {vari1},color: {vari2},clarity: {vari3}')
+
+# If button is pressed
+if st.button("Submit"):
+    
+    xgb = XGBRegressor()
+
+    xgb.fit(X_train,y_train)
+
+    # Store inputs into dataframe
+    X = pd.DataFrame([[value,value1,value2,value3,value4,value5,dict_cut[vari1],dict_color[vari2]
+,dict_clarity[vari3]]],columns = ['caret','depth','table','x','y','z','cut','color','clarity'])
+
+
+    # Get prediction
+    prediction = round(xgb.predict(X)[0],2)
+    
+    # Output prediction
+    st.text(f"This instance is a {prediction}")
