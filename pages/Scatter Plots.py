@@ -24,5 +24,5 @@ v3_list = ['cut','color','clarity']
 vari3 = st.selectbox(label = "Choose a Third Variable", options = v3_list,key=3)
 title = f"The scatter plot of {vari1} and {vari2} with {vari3}"
 fig1 = px.scatter(diamond_df, x=vari1, y=vari2, color=vari3,title=title)
-fig1.update_traces(marker={'size':10})
+fig1.update_traces(marker={'size':5})
 st.plotly_chart(fig1)
