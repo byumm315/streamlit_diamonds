@@ -110,14 +110,14 @@ st.write('x-axis: 0-20')
 st.write('y-axis: 0-20')
 st.write('z-axis: 0-20')
 
-st.write(f'Your input is caret:{value},depth:{value1},table:{value2},x:{value3},y:{value4},z:{value5}')
-
 value=int(information.split(',')[0])
 value1=int(information.split(',')[1])
 value2=int(information.split(',')[2])
 value3=int(information.split(',')[3])
 value4=int(information.split(',')[4])
 value5=int(information.split(',')[5])
+
+st.write(f'Your input is caret:{value},depth:{value1},table:{value2},x:{value3},y:{value4},z:{value5}')
 
 v1_list = list(set(diamon_df.cut))
 vari1 = st.selectbox(label = "Choose a Cut Variable", options = v1_list,key=111)
