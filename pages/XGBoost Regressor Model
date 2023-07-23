@@ -54,11 +54,16 @@ import joblib
 # Title
 st.header("Streamlit Machine Learning App")
 
-# Input bar 1
-height = st.number_input("Enter Height")
-value = st.slider("Percentage", 0, 100, step=1)
+carat = st.number_input("Enter carat")
+value = st.slider("values", 0, 10, step=0.001)
 
-st.write(f"{percentage}% of {value} is {result}")
+depth = st.number_input("Enter depth")
+value1 = st.slider("values", 30, 100, step=0.001)
+
+table= st.number_input("Enter table")
+value2 = st.slider("values", 30, 100, step=0.001)
+
+
 
 # If button is pressed
 if st.button("Submit"):
