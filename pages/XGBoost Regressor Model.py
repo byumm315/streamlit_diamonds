@@ -125,9 +125,8 @@ if st.button("Submit"):
     xgb.load_model('xgb_model.json')
     
     # Store inputs into dataframe
-    X = pd.DataFrame([[value,value1,value2,value3,value4,value5,dict_cut[vari1],dict_color[vari2]
-,dict_clarity[vari3]]],columns = ['carat','depth','table','x','y','z','cut','color','clarity'])
-
+    X = pd.DataFrame([[value,dict_cut[vari1],dict_color[vari2]
+,dict_clarity[vari3],value1,value2,value3,value4,value5],columns = ['carat', 'cut', 'color', 'clarity', 'depth', 'table', 'x', 'y', 'z'])
 
     # Get prediction
     prediction = round(xgb.predict(X)[0],2)
