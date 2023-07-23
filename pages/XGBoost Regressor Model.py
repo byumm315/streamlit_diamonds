@@ -132,7 +132,7 @@ if st.button("Submit"):
     
     # Store inputs into dataframe
     X = pd.DataFrame([[value,value1,value2,value3,value4,value5,dict_cut[vari1],dict_color[vari2]
-,dict_clarity[vari3]]],columns = ['caret','depth','table','x','y','z','cut','color','clarity'])
+,dict_clarity[vari3]]],columns = ['carat','depth','table','x','y','z','cut','color','clarity'])
 
 
     # Get prediction
