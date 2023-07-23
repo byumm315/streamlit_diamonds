@@ -128,9 +128,8 @@ st.write(f'Your input is cut: {vari1},color: {vari2},clarity: {vari3}')
 if st.button("Submit"):
     
     xgb = XGBRegressor()
-
-    xgb.fit(X_train,y_train)
-
+    xgb.load_model('xgb_model.py')
+    
     # Store inputs into dataframe
     X = pd.DataFrame([[value,value1,value2,value3,value4,value5,dict_cut[vari1],dict_color[vari2]
 ,dict_clarity[vari3]]],columns = ['caret','depth','table','x','y','z','cut','color','clarity'])
