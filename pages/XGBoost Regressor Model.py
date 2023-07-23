@@ -102,25 +102,22 @@ import joblib
 
 # Title
 st.header("Streamlit Machine Learning App")
+information = st.text_input(label="X values", value="caret,depth,table,x,y,z")
+st.write('caret: 0-10')
+st.write('depth: 40-100')
+st.write('table: 40-100')
+st.write('x-axis: 0-20')
+st.write('y-axis: 0-20')
+st.write('z-axis: 0-20')
 
-value = st.slider("values", 0.000, 10.000, step=0.001,key=1)
-st.write(f"The Diamond Caret is {value}.")
+st.write(f'Your input is caret:{value},depth:{value1},table:{value2},x:{value3},y:{value4},z:{value5}')
 
-value1 = st.slider("values", 30.000, 100.000, step=0.001,key=2)
-st.write(f"The Diamond Depth is {value1}.")
-
-value2 = st.slider("values", 30.000, 100.000, step=0.001,key=3)
-st.write(f"The Diamond Table is {value2}.")
-
-value3 = st.slider("values", 0.000, 20.000, step=0.001,key=4)
-st.write(f"The Diamond X-axis is {value3}.")
-
-value4 = st.slider("values", 0.000, 20.000, step=0.001,key=5)
-st.write(f"The Diamond Y-axis is {value4}.")
-
-value5 = st.slider("values", 0.000, 20.000, step=0.001,key=6)
-st.write(f"The Diamond Z-axis is {value5}.")
-
+value=int(information.split(',')[0])
+value1=int(information.split(',')[1])
+value2=int(information.split(',')[2])
+value3=int(information.split(',')[3])
+value4=int(information.split(',')[4])
+value5=int(information.split(',')[5])
 
 v1_list = list(set(diamon_df.cut))
 vari1 = st.selectbox(label = "Choose a Cut Variable", options = v1_list,key=111)
@@ -133,3 +130,4 @@ st.write(f"The Diamond Color is {vari2}.")
 v3_list = list(set(diamon_df.clarity))
 vari3 = st.selectbox(label = "Choose a Clarity Variable", options = v3_list,key=333)
 st.write(f"The Diamond clarity is {vali3}.")
+st.write(f'Your input is cut: {vari1},color: {vari2},clarity: {vari3})
