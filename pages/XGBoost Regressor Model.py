@@ -123,13 +123,13 @@ st.write(f"The Diamond Z-axis is {value5}.")
 
 
 v1_list = list(set(diamon_df.cut))
-vari1 = st.selectbox(label = "Choose a Cut Variable", options = v1_list,key=1)
+vari1 = st.selectbox(label = "Choose a Cut Variable", options = v1_list,key=111)
 st.write(f"The Diamond Cut is {vali1}.")
 
 v2_list = list(set(diamon_df.color))
-vari2 = st.selectbox(label = "Choose a Color Variable", options = v2_list,key=2)
+vari2 = st.selectbox(label = "Choose a Color Variable", options = v2_list,key=222)
 st.write(f"The Diamond Color is {vari2}.")
 
 v3_list = list(set(diamon_df.clarity))
-vari3 = st.selectbox(label = "Choose a Clarity Variable", options = v3_list,key=3)
+vari3 = st.selectbox(label = "Choose a Clarity Variable", options = v3_list,key=333)
 st.write(f"The Diamond clarity is {vali3}.")
