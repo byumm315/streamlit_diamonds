@@ -42,6 +42,6 @@ v2_list = list(df.columns)
 vari2 = st.selectbox(label = "Choose a Second Variable", options = v2_list,key=2)
 v3_list = ['cut','color','clarity']
 vari3 = st.selectbox(label = "Choose a Third Variable", options = v3_list,key=3)
-fig1 = px.scatter(diamond_df.loc[k1:k2], x=vari1, y=vari2, color=vari3,title=f'The Scatter plots of Diamond data({vari1,vari2,vari3})'))
+fig1 = px.scatter(diamond_df.loc[k1:k2], x=vari1, y=vari2, color=vari3,title=f'The Scatter plots of Diamond data({vari1,vari2,vari3})')
 fig1.update_traces(marker={'size':10})
 st.plotly_chart(fig1)
