@@ -139,20 +139,3 @@ st.write(f"The Diamond Color is {vari2}.")
 v3_list = list(set(diamon_df.clarity))
 vari3 = st.selectbox(label = "Choose a Clarity Variable", options = v3_list,key=3)
 st.write(f"The Diamond clarity is {vali3}.")
-
-# If button is pressed
-if st.button("Submit"):
-    
-    # Unpickle classifier
-    xgb = joblib.load("xgb.pkl")
-    
-    # Store inputs into dataframe
-    X = pd.DataFrame([[value,value1,value2,value3,value4,value5,dict_cut[vari1],dict_color[vari2]
-,dict_clarity[vari3]]],columns = ['caret','depth','table','x','y','z','cut','color','clarity'])
-
-
-    # Get prediction
-    prediction = round(xgb.predict(X)[0],2)
-    
-    # Output prediction
-    st.text(f"This instance is a {prediction}")
