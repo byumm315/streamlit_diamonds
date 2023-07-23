@@ -17,18 +17,13 @@ diamond_df = diamond_df[(diamond_df["z"]<30)&(diamond_df["z"]>2)]
 
 df = diamond_df.drop(['cut','color','clarity'],axis=1)
 
-st.set_page_config(
-    page_title="Barplots"
-)
 st.subheader('The Bar plots of Diamond data')
 @st.cache_data(experimental_allow_widgets=True)
-def func4():
-    v1_list = ['cut','color','clarity']
-    vari1 = st.selectbox(label = "Choose a First Variable", options = v1_list,key=4)
-    v2_list = list(df.columns)
-    vari2 = st.selectbox(label = "Choose a Second Variable", options = v2_list,key=5)
-    title = f"The Bar plot of {vari1} and {vari2}"
-    fig4 = px.bar(diamond_df, x = vari1, y = vari2,title=title)
-    st.plotly_chart(fig4)
-    st.dataframe(pd.DataFrame(round(diamond_df.groupby(vari1)[vari2].mean(),2)).T)
-func4()
+v1_list = ['cut','color','clarity']
+vari1 = st.selectbox(label = "Choose a First Variable", options = v1_list,key=4)
+v2_list = list(df.columns)
+vari2 = st.selectbox(label = "Choose a Second Variable", options = v2_list,key=5)
+title = f"The Bar plot of {vari1} and {vari2}"
+fig4 = px.bar(diamond_df, x = vari1, y = vari2,title=title)
+st.plotly_chart(fig4)
+st.dataframe(pd.DataFrame(round(diamond_df.groupby(vari1)[vari2].mean(),2)).T)
