@@ -82,12 +82,6 @@ dict_clarity['IF']=label_data.loc[aa,'clarity']
 
 
 
-# Assigning the featurs as X and trarget as y
-X= label_data.drop(["price"],axis =1)
-y= label_data["price"]
-
-X_train, X_test, y_train, y_test = train_test_split(X, y,test_size=0.25, random_state=7)
-
 import streamlit as st
 import pandas as pd
 
