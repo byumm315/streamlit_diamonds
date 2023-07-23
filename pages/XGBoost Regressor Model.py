@@ -88,7 +88,7 @@ y= label_data["price"]
 
 X_train, X_test, y_train, y_test = train_test_split(X, y,test_size=0.25, random_state=7)
 
-xgb_model = xgboost.XGBRegressor()
+xgb_model = XGBRegressor()
 
 xgb_model.fit(X_train,y_train)
 
