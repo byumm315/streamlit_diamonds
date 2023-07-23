@@ -18,7 +18,6 @@ diamond_df = diamond_df[(diamond_df["z"]<30)&(diamond_df["z"]>2)]
 df = diamond_df.drop(['cut','color','clarity'],axis=1)
 
 st.subheader('The Bar plots of Diamond data')
-@st.cache_data(experimental_allow_widgets=True)
 v1_list = ['cut','color','clarity']
 vari1 = st.selectbox(label = "Choose a First Variable", options = v1_list,key=4)
 v2_list = list(df.columns)
